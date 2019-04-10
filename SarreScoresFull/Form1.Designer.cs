@@ -55,7 +55,7 @@
             this.uiLogOffButton.TabIndex = 2;
             this.uiLogOffButton.Text = "Log Off";
             this.uiLogOffButton.UseVisualStyleBackColor = true;
-
+            this.uiLogOffButton.Click += new System.EventHandler(this.uiLogOffButton_Click);
             // 
             // uiLoginButton
             // 
@@ -65,7 +65,7 @@
             this.uiLoginButton.TabIndex = 1;
             this.uiLoginButton.Text = "Log In";
             this.uiLoginButton.UseVisualStyleBackColor = true;
-
+            this.uiLoginButton.Click += new System.EventHandler(this.uiLoginButton_Click);
             // 
             // Label11
             // 
@@ -83,6 +83,7 @@
             this.uiPasswordTextBox.PasswordChar = '*';
             this.uiPasswordTextBox.Size = new System.Drawing.Size(154, 20);
             this.uiPasswordTextBox.TabIndex = 0;
+            this.uiPasswordTextBox.TextChanged += new System.EventHandler(this.uiPasswordTextBox_TextChanged);
             // 
             // uiMarksDisplayTextBox
             // 
@@ -93,6 +94,7 @@
             this.uiMarksDisplayTextBox.Size = new System.Drawing.Size(370, 153);
             this.uiMarksDisplayTextBox.TabIndex = 37;
             this.uiMarksDisplayTextBox.TabStop = false;
+            this.uiMarksDisplayTextBox.TextChanged += new System.EventHandler(this.uiMarksDisplayTextBox_TextChanged);
             // 
             // uiShowMarks100_0Button
             // 
@@ -103,7 +105,7 @@
             this.uiShowMarks100_0Button.TabIndex = 9;
             this.uiShowMarks100_0Button.Text = "Show Marks (100-0)";
             this.uiShowMarks100_0Button.UseVisualStyleBackColor = true;
-
+            this.uiShowMarks100_0Button.Click += new System.EventHandler(this.uiShowMarks100_0Button_Click);
             // 
             // uiShowMarksAZButton
             // 
@@ -114,7 +116,7 @@
             this.uiShowMarksAZButton.TabIndex = 8;
             this.uiShowMarksAZButton.Text = "Show Marks (A-Z)";
             this.uiShowMarksAZButton.UseVisualStyleBackColor = true;
-
+            this.uiShowMarksAZButton.Click += new System.EventHandler(this.uiShowMarksAZButton_Click);
             // 
             // Label3
             // 
@@ -151,6 +153,7 @@
             this.uiMarkEntryConicalTextBox.Name = "uiMarkEntryConicalTextBox";
             this.uiMarkEntryConicalTextBox.Size = new System.Drawing.Size(100, 20);
             this.uiMarkEntryConicalTextBox.TabIndex = 5;
+            this.uiMarkEntryConicalTextBox.TextChanged += new System.EventHandler(this.uiMarkEntryConicalTextBox_TextChanged);
             // 
             // uiMarkEntryClassTestTextBox
             // 
@@ -160,6 +163,7 @@
             this.uiMarkEntryClassTestTextBox.Name = "uiMarkEntryClassTestTextBox";
             this.uiMarkEntryClassTestTextBox.Size = new System.Drawing.Size(100, 20);
             this.uiMarkEntryClassTestTextBox.TabIndex = 4;
+            this.uiMarkEntryClassTestTextBox.TextChanged += new System.EventHandler(this.uiMarkEntryClassTestTextBox_TextChanged);
             // 
             // uiMarkEntryNameTextBox
             // 
@@ -168,6 +172,7 @@
             this.uiMarkEntryNameTextBox.Name = "uiMarkEntryNameTextBox";
             this.uiMarkEntryNameTextBox.Size = new System.Drawing.Size(154, 20);
             this.uiMarkEntryNameTextBox.TabIndex = 3;
+            this.uiMarkEntryNameTextBox.TextChanged += new System.EventHandler(this.uiMarkEntryNameTextBox_TextChanged);
             // 
             // uiStoreMarksButton
             // 
@@ -178,7 +183,7 @@
             this.uiStoreMarksButton.TabIndex = 7;
             this.uiStoreMarksButton.Text = "Store Marks";
             this.uiStoreMarksButton.UseVisualStyleBackColor = true;
-
+            this.uiStoreMarksButton.Click += new System.EventHandler(this.uiStoreMarksButton_Click);
             // 
             // label4
             // 
@@ -197,6 +202,7 @@
             this.uiMarkEntryDestructiveTextBox.Name = "uiMarkEntryDestructiveTextBox";
             this.uiMarkEntryDestructiveTextBox.Size = new System.Drawing.Size(100, 20);
             this.uiMarkEntryDestructiveTextBox.TabIndex = 6;
+            this.uiMarkEntryDestructiveTextBox.TextChanged += new System.EventHandler(this.uiMarkEntryDestructiveTextBox_TextChanged);
             // 
             // Form1
             // 
