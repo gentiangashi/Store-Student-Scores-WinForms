@@ -29,7 +29,7 @@ namespace SarreScoresFull
         string[] Collumns = { "Name","Test", "Basket","Destructive","Final Grade"};
         string[] Names = { "Alex", "Danny", "Dave", "Goerge", "Hannan", "Ian", "Muna" };     
         int[,] Grade = new int[7, 3];
-        int[] FinalGrade = new int[7];
+        double[] FinalGrade = new double[7];
 
         string nameINPUT = "";
 
@@ -40,12 +40,8 @@ namespace SarreScoresFull
         int ConicalBasketOUTPUT = 0;
 
         string EntryDestructiveINPUT;
-        int EntryDestructiveOUTPUT = 0;
-
-
-        //int[,] Grades = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
-        //Overall Mark = Class Test*0.40 + Conical Basket * 0.40 + Destructive Testing *0.20
-
+        int EntryDestructiveOUTPUT = 0;      
+               
         private void Form1_Load(object sender, EventArgs e)
         {
         }
@@ -158,49 +154,57 @@ namespace SarreScoresFull
 
         private void uiStoreMarksButton_Click(object sender, EventArgs e)
         {
+            double finalGrade = ClassTestOUTPUT * 0.40 + ConicalBasketOUTPUT * 0.40 + EntryDestructiveOUTPUT * 0.20;
             if (Names.Contains(nameINPUT))
             {
                 if(nameINPUT == "Alex")
                 {
                     Grade[0, 0] = ClassTestOUTPUT;
                     Grade[0, 1] = ConicalBasketOUTPUT;
-                    Grade[0, 2] = EntryDestructiveOUTPUT;             
+                    Grade[0, 2] = EntryDestructiveOUTPUT;
+                    FinalGrade[0] = finalGrade;
                 }
                 else if(nameINPUT == "Danny")
                 {
                     Grade[1, 0] = ClassTestOUTPUT;
                     Grade[1, 1] = ConicalBasketOUTPUT;
                     Grade[1, 2] = EntryDestructiveOUTPUT;
+                    FinalGrade[1] = finalGrade;
                 }
                 else if (nameINPUT == "Dave")
                 {
                     Grade[2, 0] = ClassTestOUTPUT;
                     Grade[2, 1] = ConicalBasketOUTPUT;
                     Grade[2, 2] = EntryDestructiveOUTPUT;
+                    FinalGrade[2] = finalGrade;
                 }
                 else if (nameINPUT == "Goerge")
                 {
                     Grade[3, 0] = ClassTestOUTPUT;
                     Grade[3, 1] = ConicalBasketOUTPUT;
                     Grade[3, 2] = EntryDestructiveOUTPUT;
+                    FinalGrade[3] = finalGrade;
                 }
                 else if (nameINPUT == "Hannan")
                 {
                     Grade[4, 0] = ClassTestOUTPUT;
                     Grade[4, 1] = ConicalBasketOUTPUT;
                     Grade[4, 2] = EntryDestructiveOUTPUT;
+                    FinalGrade[4] = finalGrade;
                 }
                 else if (nameINPUT == "Ian")
                 {
                     Grade[5, 0] = ClassTestOUTPUT;
                     Grade[5, 1] = ConicalBasketOUTPUT;
-                    Grade[5, 2] = EntryDestructiveOUTPUT;                    
+                    Grade[5, 2] = EntryDestructiveOUTPUT;
+                    FinalGrade[5] = finalGrade;
                 }
                 else if (nameINPUT == "Muna")
                 {
                     Grade[6, 0] = ClassTestOUTPUT;
                     Grade[6, 1] = ConicalBasketOUTPUT;
-                    Grade[6, 2] = EntryDestructiveOUTPUT;                   
+                    Grade[6, 2] = EntryDestructiveOUTPUT;
+                    FinalGrade[6] = finalGrade;
                 }
             }
             else
@@ -215,19 +219,20 @@ namespace SarreScoresFull
         }
 
         private void uiShowMarksAZButton_Click(object sender, EventArgs e)
-        {
-            uiMarksDisplayTextBox.Text = string.Join("          ", Collumns);
+        {         
+            uiMarksDisplayTextBox.Text = string.Join("\t", Collumns);
             uiMarksDisplayTextBox.Text += System.Environment.NewLine;
 
-            for (int i = 0; i < Names.Length; i++ )
-            {                
-                uiMarksDisplayTextBox.Text += (Names[i]);
+            for (int i = 0; i < Names.Length; i++)
+            {
+                uiMarksDisplayTextBox.Text += Names[i];
                 for (int x = 0; x < 3; x++)
                 {
-                    uiMarksDisplayTextBox.Text += ("\t" + "         " +Grade[x, x]);                  
+                    uiMarksDisplayTextBox.Text += "\t" + Grade[i, x];
                 }
+                uiMarksDisplayTextBox.Text += "\t" + "\t" + FinalGrade[i];
                 uiMarksDisplayTextBox.Text += System.Environment.NewLine;
-            }            
+            }
         }
 
         private void uiShowMarks100_0Button_Click(object sender, EventArgs e)
