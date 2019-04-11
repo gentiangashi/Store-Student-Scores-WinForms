@@ -45,9 +45,10 @@ namespace SarreScoresFull
 
         private void uiLoginButton_Click(object sender, EventArgs e)
         {
-            string password = "OpenSimSim";
+            //string password = "OpenSimSim";
+            string password = "1";
 
-            if(password == uiPasswordTextBox.Text)
+            if (password == uiPasswordTextBox.Text)
             {
                 uiLogOffButton.Enabled = true;
                 uiLoginButton.Enabled = false;
@@ -141,11 +142,18 @@ namespace SarreScoresFull
 
         private void uiShowMarksAZButton_Click(object sender, EventArgs e)
         {
+            uiMarksDisplayTextBox.Text = string.Join("          ", Collumns);
+            uiMarksDisplayTextBox.Text += System.Environment.NewLine;
 
-            string separator = "          ";
-            uiMarksDisplayTextBox.Text = string.Join(separator, Collumns);
-            foreach (string str in Names) uiMarksDisplayTextBox.Text += str + System.Environment.NewLine;
-
+            for (int i = 0; i < Names.Length; i++ )
+            {                
+                uiMarksDisplayTextBox.Text += (Names[i]);
+                for (int x = 0; x < 3; x++)
+                {
+                    uiMarksDisplayTextBox.Text += ("\t" + "         " +Grade[x, x]);                  
+                }
+                uiMarksDisplayTextBox.Text += System.Environment.NewLine;
+            }            
         }
 
         private void uiShowMarks100_0Button_Click(object sender, EventArgs e)
@@ -154,7 +162,8 @@ namespace SarreScoresFull
         }
 
         private void uiMarksDisplayTextBox_TextChanged(object sender, EventArgs e)
-        {            
+        {
+            
             
         }
 
