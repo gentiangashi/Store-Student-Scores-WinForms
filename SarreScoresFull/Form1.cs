@@ -28,8 +28,20 @@ namespace SarreScoresFull
         int numberOfTries = 0;
         string[] Collumns = { "Name","Test", "Basket","Destructive","Final Grade"};
         string[] Names = { "Alex", "Danny", "Dave", "Goerge", "Hannan", "Ian", "Muna" };     
-        int[,] Grade = new int[3, 7];
+        int[,] Grade = new int[7, 3];
         int[] FinalGrade = new int[7];
+
+        string nameINPUT = "";
+
+        string ClassTestINPUT;
+        int ClassTestOUTPUT = 0;
+
+        string ConicalBasketINPUT;
+        int ConicalBasketOUTPUT = 0;
+
+        string EntryDestructiveINPUT;
+        int EntryDestructiveOUTPUT = 0;
+
 
         //int[,] Grades = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
         //Overall Mark = Class Test*0.40 + Conical Basket * 0.40 + Destructive Testing *0.20
@@ -122,22 +134,84 @@ namespace SarreScoresFull
 
         private void uiMarkEntryNameTextBox_TextChanged(object sender, EventArgs e)
         {
-           
+            nameINPUT = uiMarkEntryNameTextBox.Text;
         }
 
         private void uiMarkEntryClassTestTextBox_TextChanged(object sender, EventArgs e)
         {
+            ClassTestINPUT = uiMarkEntryClassTestTextBox.Text;
+            var isNumber = int.TryParse(ClassTestINPUT, out ClassTestOUTPUT);
+        }
 
+        private void uiMarkEntryConicalTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+            ConicalBasketINPUT = uiMarkEntryConicalTextBox.Text;
+            var isNumber = int.TryParse(ConicalBasketINPUT, out ConicalBasketOUTPUT);
         }
 
         private void uiMarkEntryDestructiveTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            EntryDestructiveINPUT = uiMarkEntryDestructiveTextBox.Text;
+            var isNumber = int.TryParse(EntryDestructiveINPUT, out EntryDestructiveOUTPUT);
         }
 
         private void uiStoreMarksButton_Click(object sender, EventArgs e)
         {
-
+            if (Names.Contains(nameINPUT))
+            {
+                if(nameINPUT == "Alex")
+                {
+                    Grade[0, 0] = ClassTestOUTPUT;
+                    Grade[0, 1] = ConicalBasketOUTPUT;
+                    Grade[0, 2] = EntryDestructiveOUTPUT;             
+                }
+                else if(nameINPUT == "Danny")
+                {
+                    Grade[1, 0] = ClassTestOUTPUT;
+                    Grade[1, 1] = ConicalBasketOUTPUT;
+                    Grade[1, 2] = EntryDestructiveOUTPUT;
+                }
+                else if (nameINPUT == "Dave")
+                {
+                    Grade[2, 0] = ClassTestOUTPUT;
+                    Grade[2, 1] = ConicalBasketOUTPUT;
+                    Grade[2, 2] = EntryDestructiveOUTPUT;
+                }
+                else if (nameINPUT == "Goerge")
+                {
+                    Grade[3, 0] = ClassTestOUTPUT;
+                    Grade[3, 1] = ConicalBasketOUTPUT;
+                    Grade[3, 2] = EntryDestructiveOUTPUT;
+                }
+                else if (nameINPUT == "Hannan")
+                {
+                    Grade[4, 0] = ClassTestOUTPUT;
+                    Grade[4, 1] = ConicalBasketOUTPUT;
+                    Grade[4, 2] = EntryDestructiveOUTPUT;
+                }
+                else if (nameINPUT == "Ian")
+                {
+                    Grade[5, 0] = ClassTestOUTPUT;
+                    Grade[5, 1] = ConicalBasketOUTPUT;
+                    Grade[5, 2] = EntryDestructiveOUTPUT;                    
+                }
+                else if (nameINPUT == "Muna")
+                {
+                    Grade[6, 0] = ClassTestOUTPUT;
+                    Grade[6, 1] = ConicalBasketOUTPUT;
+                    Grade[6, 2] = EntryDestructiveOUTPUT;                   
+                }
+            }
+            else
+            {
+                MessageBox.Show("Marks not stored: Name not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                uiMarkEntryNameTextBox.Text = "";
+            }
+            uiMarkEntryNameTextBox.Text = "";
+            uiMarkEntryClassTestTextBox.Text = "";
+            uiMarkEntryConicalTextBox.Text = "";
+            uiMarkEntryDestructiveTextBox.Text = "";
         }
 
         private void uiShowMarksAZButton_Click(object sender, EventArgs e)
@@ -167,9 +241,6 @@ namespace SarreScoresFull
             
         }
 
-        private void uiMarkEntryConicalTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
