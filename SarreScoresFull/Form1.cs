@@ -26,11 +26,13 @@ namespace SarreScoresFull
 
         //Number of Tries
         int numberOfTries = 0;
-        string[] Names = { "Alex", "Danny", "Dave", "Goerge", "Hannan", "Ian", "Muna" };
-        int[] Test = { 0, 0, 0, 0, 0, 0, 0 };
-        int[] Basket = { 0, 0, 0, 0, 0, 0, 0 };
-        int[] Destructive = { 0, 0, 0, 0, 0, 0, 0 };
-        int[] FinalGrade = { 0, 0, 0, 0, 0, 0, 0 };
+        string[] Collumns = { "Name","Test", "Basket","Destructive","Final Grade"};
+        string[] Names = { "Alex", "Danny", "Dave", "Goerge", "Hannan", "Ian", "Muna" };     
+        int[,] Grade = new int[3, 7];
+        int[] FinalGrade = new int[7];
+
+        //int[,] Grades = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
+        //Overall Mark = Class Test*0.40 + Conical Basket * 0.40 + Destructive Testing *0.20
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -43,7 +45,7 @@ namespace SarreScoresFull
 
         private void uiLoginButton_Click(object sender, EventArgs e)
         {
-            string password = "password";
+            string password = "OpenSimSim";
 
             if(password == uiPasswordTextBox.Text)
             {
@@ -96,8 +98,6 @@ namespace SarreScoresFull
                             
         private void uiLogOffButton_Click(object sender, EventArgs e)
         {
-            uiPasswordTextBox.Text = "";
-
             uiLoginButton.Enabled = true;
             uiPasswordTextBox.Enabled = true;
 
@@ -111,6 +111,7 @@ namespace SarreScoresFull
             uiMarksDisplayTextBox.Enabled = false;
             uiMarkEntryConicalTextBox.Enabled = false;
 
+            uiPasswordTextBox.Text = "";
             uiMarkEntryNameTextBox.Text = "";
             uiMarkEntryClassTestTextBox.Text = "";
             uiMarkEntryDestructiveTextBox.Text = "";
@@ -120,16 +121,7 @@ namespace SarreScoresFull
 
         private void uiMarkEntryNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            string name = "";
-            //for (int i = 0; i < Names.Length; i++)
-            //{
-            //    Names[i];
-
-            //}
-            //if (name != Names[0])
-            //{
-
-            //}
+           
         }
 
         private void uiMarkEntryClassTestTextBox_TextChanged(object sender, EventArgs e)
@@ -148,20 +140,11 @@ namespace SarreScoresFull
         }
 
         private void uiShowMarksAZButton_Click(object sender, EventArgs e)
-        {           
-            //foreach (string item in Names)
-            //{
-            //    uiMarksDisplayTextBox.Text += "\n" + item;
-            //}
-            uiMarksDisplayTextBox.Lines = Names;
-            foreach (int item in Test)
-            {
-                Console.WriteLine(item);
-            }
-            //uiMarksDisplayTextBox = Test;
-            //uiMarksDisplayTextBox.Lines = Basket;
-            //uiMarksDisplayTextBox.Lines = Names;
-            //uiMarksDisplayTextBox.Lines = Names;
+        {
+
+            string separator = "          ";
+            uiMarksDisplayTextBox.Text = string.Join(separator, Collumns);
+            foreach (string str in Names) uiMarksDisplayTextBox.Text += str + System.Environment.NewLine;
 
         }
 
@@ -171,7 +154,8 @@ namespace SarreScoresFull
         }
 
         private void uiMarksDisplayTextBox_TextChanged(object sender, EventArgs e)
-        {
+        {            
+            
         }
 
         private void uiMarkEntryConicalTextBox_TextChanged(object sender, EventArgs e)
