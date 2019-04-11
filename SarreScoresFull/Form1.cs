@@ -11,8 +11,6 @@ namespace SarreScoresFull
 {
     public partial class Form1 : Form
     {
-
-
         public Form1()
         {
             InitializeComponent();
@@ -48,7 +46,6 @@ namespace SarreScoresFull
 
         private void uiPasswordTextBox_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void uiLoginButton_Click(object sender, EventArgs e)
@@ -141,7 +138,6 @@ namespace SarreScoresFull
 
         private void uiMarkEntryConicalTextBox_TextChanged(object sender, EventArgs e)
         {
-
             ConicalBasketINPUT = uiMarkEntryConicalTextBox.Text;
             var isNumber = int.TryParse(ConicalBasketINPUT, out ConicalBasketOUTPUT);
         }
@@ -236,16 +232,11 @@ namespace SarreScoresFull
         }
 
         private void uiShowMarks100_0Button_Click(object sender, EventArgs e)
-        {
-
-        }
+        {                   
+        }              
 
         private void uiMarksDisplayTextBox_TextChanged(object sender, EventArgs e)
-        {
-            
-            
-        }
-
-        
+        {                        
+        }        
     }
 }
