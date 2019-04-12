@@ -232,7 +232,28 @@ namespace SarreScoresFull
         }
 
         private void uiShowMarks100_0Button_Click(object sender, EventArgs e)
-        {                   
+        {
+            uiMarksDisplayTextBox.Text = "";
+            uiMarksDisplayTextBox.Text = string.Join("\t", Collumns);
+            uiMarksDisplayTextBox.Text += System.Environment.NewLine;
+
+            double temp = 0;
+            
+                for (int x = 0; x < FinalGrade.Length; x++)
+                {
+                    for (int j = x + 1; j < FinalGrade.Length; j++)
+                    {
+                        if (FinalGrade[x] > FinalGrade[j])
+                        {
+                            temp = FinalGrade[j];
+                            FinalGrade[j] = FinalGrade[x];
+                            FinalGrade[x] = temp;
+                        }
+                        uiMarksDisplayTextBox.Text += "\t" + "\t" + FinalGrade[x];
+                        uiMarksDisplayTextBox.Text += System.Environment.NewLine;
+                    
+                    }
+                }
         }              
 
         private void uiMarksDisplayTextBox_TextChanged(object sender, EventArgs e)
