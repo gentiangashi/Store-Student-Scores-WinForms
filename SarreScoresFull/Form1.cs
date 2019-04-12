@@ -27,7 +27,7 @@ namespace SarreScoresFull
         string[] Collumns = { "Name","Test", "Basket","Destructive","Final Grade"};
         string[] Names = { "Alex", "Danny", "Dave", "Goerge", "Hannan", "Ian", "Muna" };     
         int[,] Grade = new int[7, 3];
-        double[] FinalGrade = new double[7];
+        int[] FinalGrade = new int[7];
 
         string nameINPUT = "";
 
@@ -99,8 +99,7 @@ namespace SarreScoresFull
                 uiMarksDisplayTextBox.Enabled = false;
                 uiMarkEntryConicalTextBox.Enabled = false;
             }
-        }
-  
+        }  
                             
         private void uiLogOffButton_Click(object sender, EventArgs e)
         {
@@ -133,7 +132,7 @@ namespace SarreScoresFull
         private void uiMarkEntryClassTestTextBox_TextChanged(object sender, EventArgs e)
         {
             ClassTestINPUT = uiMarkEntryClassTestTextBox.Text;
-            var isNumber = int.TryParse(ClassTestINPUT, out ClassTestOUTPUT);
+            var isNumber = int.TryParse(ClassTestINPUT, out ClassTestOUTPUT);      
         }
 
         private void uiMarkEntryConicalTextBox_TextChanged(object sender, EventArgs e)
@@ -150,7 +149,29 @@ namespace SarreScoresFull
 
         private void uiStoreMarksButton_Click(object sender, EventArgs e)
         {
+            if (ClassTestOUTPUT >= 1 && ClassTestOUTPUT <= 100)
+            {
+                //success
+            }
+            else if (ConicalBasketOUTPUT >= 1 && ConicalBasketOUTPUT <= 100)
+            {
+                //success
+            }
+            else if (EntryDestructiveOUTPUT >= 1 && EntryDestructiveOUTPUT <= 100)
+            {
+                //success
+            }
+            else
+            {
+                MessageBox.Show("Please Enter a Number Between 1 - 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ClassTestOUTPUT = 0;
+                ConicalBasketOUTPUT = 0;
+                EntryDestructiveOUTPUT = 0;
+
+            }
+
             double finalGrade = ClassTestOUTPUT * 0.40 + ConicalBasketOUTPUT * 0.40 + EntryDestructiveOUTPUT * 0.20;
+            int FinalINTGrade = Convert.ToInt32(finalGrade);
             if (Names.Contains(nameINPUT))
             {
                 if(nameINPUT == "Alex")
@@ -158,49 +179,49 @@ namespace SarreScoresFull
                     Grade[0, 0] = ClassTestOUTPUT;
                     Grade[0, 1] = ConicalBasketOUTPUT;
                     Grade[0, 2] = EntryDestructiveOUTPUT;
-                    FinalGrade[0] = finalGrade;
+                    FinalGrade[0] = FinalINTGrade;
                 }
                 else if(nameINPUT == "Danny")
                 {
                     Grade[1, 0] = ClassTestOUTPUT;
                     Grade[1, 1] = ConicalBasketOUTPUT;
                     Grade[1, 2] = EntryDestructiveOUTPUT;
-                    FinalGrade[1] = finalGrade;
+                    FinalGrade[1] = FinalINTGrade;
                 }
                 else if (nameINPUT == "Dave")
                 {
                     Grade[2, 0] = ClassTestOUTPUT;
                     Grade[2, 1] = ConicalBasketOUTPUT;
                     Grade[2, 2] = EntryDestructiveOUTPUT;
-                    FinalGrade[2] = finalGrade;
+                    FinalGrade[2] = FinalINTGrade;
                 }
                 else if (nameINPUT == "Goerge")
                 {
                     Grade[3, 0] = ClassTestOUTPUT;
                     Grade[3, 1] = ConicalBasketOUTPUT;
                     Grade[3, 2] = EntryDestructiveOUTPUT;
-                    FinalGrade[3] = finalGrade;
+                    FinalGrade[3] = FinalINTGrade;
                 }
                 else if (nameINPUT == "Hannan")
                 {
                     Grade[4, 0] = ClassTestOUTPUT;
                     Grade[4, 1] = ConicalBasketOUTPUT;
                     Grade[4, 2] = EntryDestructiveOUTPUT;
-                    FinalGrade[4] = finalGrade;
+                    FinalGrade[4] = FinalINTGrade;
                 }
                 else if (nameINPUT == "Ian")
                 {
                     Grade[5, 0] = ClassTestOUTPUT;
                     Grade[5, 1] = ConicalBasketOUTPUT;
                     Grade[5, 2] = EntryDestructiveOUTPUT;
-                    FinalGrade[5] = finalGrade;
+                    FinalGrade[5] = FinalINTGrade;
                 }
                 else if (nameINPUT == "Muna")
                 {
                     Grade[6, 0] = ClassTestOUTPUT;
                     Grade[6, 1] = ConicalBasketOUTPUT;
                     Grade[6, 2] = EntryDestructiveOUTPUT;
-                    FinalGrade[6] = finalGrade;
+                    FinalGrade[6] = FinalINTGrade;
                 }
             }
             else
@@ -226,35 +247,34 @@ namespace SarreScoresFull
                 {
                     uiMarksDisplayTextBox.Text += "\t" + Grade[i, x];
                 }
-                uiMarksDisplayTextBox.Text += "\t" + "\t" + FinalGrade[i];
+                uiMarksDisplayTextBox.Text += "\t" + "\t" + (FinalGrade[i]);
                 uiMarksDisplayTextBox.Text += System.Environment.NewLine;
             }
         }
 
+        private class Student
+        {
+            public string Name { get; set; }
+            public int Test { get; set; }
+            public int Basket { get; set; }
+            public int Destructive { get; set; }
+            public int FinalGrade { get; set; }
+        }        
+
         private void uiShowMarks100_0Button_Click(object sender, EventArgs e)
         {
-            uiMarksDisplayTextBox.Text = "";
-            uiMarksDisplayTextBox.Text = string.Join("\t", Collumns);
-            uiMarksDisplayTextBox.Text += System.Environment.NewLine;
-
-            double temp = 0;
-            
-                for (int x = 0; x < FinalGrade.Length; x++)
-                {
-                    for (int j = x + 1; j < FinalGrade.Length; j++)
-                    {
-                        if (FinalGrade[x] > FinalGrade[j])
-                        {
-                            temp = FinalGrade[j];
-                            FinalGrade[j] = FinalGrade[x];
-                            FinalGrade[x] = temp;
-                        }
-                        uiMarksDisplayTextBox.Text += "\t" + "\t" + FinalGrade[x];
-                        uiMarksDisplayTextBox.Text += System.Environment.NewLine;
-                    
-                    }
-                }
-        }              
+            var input = new Student[]
+            {
+             new Student {Name = Names[0],    Test = Grade[0,0],   Basket = Grade[0, 1],  Destructive = Grade[0, 2],    FinalGrade = FinalGrade[0]  },
+             new Student {Name = Names[1],    Test = Grade[1,0],   Basket = Grade[1, 1],  Destructive = Grade[1, 2],    FinalGrade = FinalGrade[1], },
+             new Student {Name = Names[2],    Test = Grade[2,0],   Basket = Grade[2, 1],  Destructive = Grade[2, 2],    FinalGrade = FinalGrade[2], },
+             new Student {Name = Names[3],    Test = Grade[3,0],   Basket = Grade[3, 1],  Destructive = Grade[3, 2],    FinalGrade = FinalGrade[3], },
+             new Student {Name = Names[4],    Test = Grade[4,0],   Basket = Grade[4, 1],  Destructive = Grade[4, 2],    FinalGrade = FinalGrade[4], },
+             new Student {Name = Names[5],    Test = Grade[5,0],   Basket = Grade[5, 1],  Destructive = Grade[5, 2],    FinalGrade = FinalGrade[5], },
+             new Student {Name = Names[6],    Test = Grade[6,0],   Basket = Grade[6, 1],  Destructive = Grade[6, 2],    FinalGrade = FinalGrade[6], },
+            };
+            var sorted = input.OrderByDescending(student => student.FinalGrade).ToArray();         
+        }
 
         private void uiMarksDisplayTextBox_TextChanged(object sender, EventArgs e)
         {                        
