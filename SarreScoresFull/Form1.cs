@@ -259,7 +259,7 @@ namespace SarreScoresFull
             public int Basket { get; set; }
             public int Destructive { get; set; }
             public int FinalGrade { get; set; }
-        }        
+        }
 
         private void uiShowMarks100_0Button_Click(object sender, EventArgs e)
         {
@@ -273,8 +273,15 @@ namespace SarreScoresFull
              new Student {Name = Names[5],    Test = Grade[5,0],   Basket = Grade[5, 1],  Destructive = Grade[5, 2],    FinalGrade = FinalGrade[5], },
              new Student {Name = Names[6],    Test = Grade[6,0],   Basket = Grade[6, 1],  Destructive = Grade[6, 2],    FinalGrade = FinalGrade[6], },
             };
-            var sorted = input.OrderByDescending(student => student.FinalGrade).ToArray();         
+            var sorted = input.OrderByDescending(student => student.FinalGrade).ToArray();
+
+            //foreach (var row in input)
+            //{
+            //    uiMarksDisplayTextBox.Text = string.Join("\t", row.AsEnumerable());
+            //}
         }
+
+
 
         private void uiMarksDisplayTextBox_TextChanged(object sender, EventArgs e)
         {                        
